@@ -11,6 +11,8 @@ public class Basket : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField]
     private AudioClip _bounceSound;
+    [SerializeField]
+    private AudioClip _pointGain;
 
     public int speedx = 3;
 
@@ -93,7 +95,8 @@ public class Basket : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Egg"))
         {
-
+            _audioSource.clip = _pointGain;
+            _audioSource.Play();
             Destroy(collision.gameObject);
             int sc = int.Parse(score.text);
             sc++;
